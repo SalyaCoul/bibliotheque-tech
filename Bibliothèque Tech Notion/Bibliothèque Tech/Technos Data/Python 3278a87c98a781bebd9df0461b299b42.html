@@ -1,0 +1,714 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Python</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3278a87c-98a7-81be-bd9d-f0461b299b42" class="page sans"><header><h1 class="page-title" dir="auto">Python</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Sélection</th><td><span class="selected-value select-value-color-orange">Développement</span></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/burst_gray.svg" style="width:14px;height:14px;display:block"/></span>État</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Terminé</span></td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="auto"><p id="bb8ce0c3-7691-4a18-9eb9-a1e454ebc85b" class="">🎯 <strong>En bref</strong> : Python est un langage de programmation polyvalent et lisible, devenu la référence incontournable dans l&#x27;écosystème Data et Machine Learning. Grâce à ses bibliothèques spécialisées (pandas, NumPy, scikit-learn, PySpark...), il est l&#x27;outil de prédilection des data engineers et data scientists pour manipuler, analyser et modéliser les données.</p></div><div style="display:contents" dir="auto"><p id="068282eb-0a20-423c-a005-5030652ab77a" class=""><strong>Analogie</strong> : Python est comme un couteau suisse numérique — facile à prendre en main, il s&#x27;adapte à presque toutes les situations : nettoyer des données, entraîner un modèle IA, orchestrer des pipelines, ou automatiser des tâches fastidieuses.</p></div><div style="display:contents" dir="auto"><p id="da19c27c-a652-4cab-ae8b-17e1ee50b1dd" class=""><strong>Utilisé par</strong> : Data Engineers, Data Scientists, Data Analysts, développeurs backend. Utilisé chez Netflix, Google, Airbnb, Spotify, et dans la quasi-totalité des entreprises tech modernes.</p></div><div style="display:contents" dir="auto"><hr id="28dfe36e-55af-4e66-91a1-8a34b7f53049"/></div><div style="display:contents" dir="auto"><p id="3278a87c-98a7-8108-b960-d4794e2e6123" class="">Python est un langage de programmation interprété, multiparadigme et multiplateformes. Il favorise la programmation impérative structurée, fonctionnelle et orientée objet. Il est doté d&#x27;un typage dynamique fort, d&#x27;une gestion automatique de la mémoire par ramasse-miettes et d&#x27;un système de gestion d&#x27;exceptions ; il est ainsi similaire à Perl, Ruby, Scheme, Smalltalk et Tcl.</p></div><div style="display:contents" dir="auto"><p id="3278a87c-98a7-8144-8005-d0bf0d62da83" class="">
+</p></div><div style="display:contents" dir="auto"><p id="3278a87c-98a7-816d-91fe-f012a3660565" class="">Python est un langage de programmation qui peut s&#x27;utiliser dans de nombreux contextes et s&#x27;adapter à tout type d&#x27;utilisation grâce à des bibliothèques spécialisées. Il est cependant particulièrement utilisé comme langage de script pour automatiser des tâches simples mais fastidieuses, comme un script qui récupérerait la météo sur Internet ou qui s&#x27;intégrerait dans un logiciel de conception assistée par ordinateur afin d&#x27;automatiser certains enchaînements d&#x27;actions répétitives. On l&#x27;utilise également comme langage de développement de prototype lorsqu&#x27;on a besoin d&#x27;une application fonctionnelle avant de l&#x27;optimiser avec un langage de plus bas niveau. Il est particulièrement répandu dans le monde scientifique, et possède de nombreuses bibliothèques optimisées destinées au calcul numérique.</p></div><div style="display:contents" dir="auto"><p id="3278a87c-98a7-810f-9767-cc1414ac0642" class="">
+</p></div><div style="display:contents" dir="auto"><p id="3278a87c-98a7-819e-8341-c5cf2efcd8e1" class="">Python peut également être utilisé dans le domaine de la science des données et du Machine Learning. Avec l’essor de l’analyse des données dans toutes les industries, ce domaine devient l’un de ses principaux cas d’utilisation.</p></div><div style="display:contents" dir="auto"><p id="3278a87c-98a7-8164-a1cd-cf58cc98d22a" class="">La grande majorité des bibliothèques utilisées pour la science des données ou le Machine Learning ont des interfaces Python. Ainsi, ce langage est devenu l’interface de commande de haut niveau la plus populaire pour les bibliothèques de Machine Learning et autres algorithmes numériques. De nombreux ouvrages d’initiation sont disponibles sur le Web.</p></div><div style="display:contents" dir="auto"><p id="3278a87c-98a7-8190-8a37-d3a265df84d9" class="">
+</p></div><div style="display:contents" dir="auto"><p id="3278a87c-98a7-8149-8f4c-f9f042e23b83" class="">Utilisation de Python dans la Data :</p></div><div style="display:contents" dir="auto"><p id="3278a87c-98a7-8191-bd32-c96f00ba07ee" class="">
+</p></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-81b4-9281-e986b0df8fb3" class="numbered-list" start="1"><li><strong>Manipulation et Nettoyage des Données :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-8124-9605-ef7be7b8da37" class="bulleted-list"><li style="list-style-type:disc">Python offre des bibliothèques puissantes telles que pandas pour la manipulation de données. Pandas fournit des structures de données flexibles et des outils pour le nettoyage, la transformation et l&#x27;analyse des données.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-8117-9895-f7bf4c3204d5" class="numbered-list" start="2"><li><strong>Traitement de Données Distribuées :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-814b-9e0d-dc46f379fc76" class="bulleted-list"><li style="list-style-type:disc">Pour le traitement de données à grande échelle, Apache Spark est souvent utilisé avec PySpark, la bibliothèque Python pour Spark. Cela permet d&#x27;exploiter la puissance de traitement distribué pour des jeux de données volumineux.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-8111-bd1b-c701dc89a28d" class="numbered-list" start="3"><li><strong>Extraction de Données (Web Scraping) :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-8181-8ef9-d0afe72bacd9" class="bulleted-list"><li style="list-style-type:disc">Beautiful Soup et Scrapy sont des bibliothèques Python largement utilisées pour extraire des données à partir de pages web, facilitant ainsi la collecte d&#x27;informations provenant de différentes sources en ligne.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-81e9-9f35-c60016efda52" class="numbered-list" start="4"><li><strong>Transformation de Données :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-8198-8975-f555ff2653d2" class="bulleted-list"><li style="list-style-type:disc">Pour la transformation de données, dask est une bibliothèque qui permet la parallélisation des opérations sur des ensembles de données plus importants que la mémoire disponible.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-8139-ba56-ef9be87c5e6a" class="numbered-list" start="5"><li><strong>Bases de Données et SQL :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-81b1-a927-d881cbb3a82f" class="bulleted-list"><li style="list-style-type:disc">Python est souvent utilisé en conjonction avec des bases de données relationnelles. SQLAlchemy facilite l&#x27;interaction avec les bases de données via une interface SQL, tandis que des bibliothèques comme PyMySQL, psycopg2, ou cx_Oracle offrent des connecteurs pour différentes bases de données.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-8104-bd50-ed43967d4a28" class="numbered-list" start="6"><li><strong>Orchestration de Flux de Travail :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-812f-8c8f-d9307c70f231" class="bulleted-list"><li style="list-style-type:disc">Apache Airflow est une plateforme populaire pour l&#x27;orchestration des flux de travail dans le domaine de l&#x27;ingénierie des données. Vous pouvez définir, planifier et surveiller des tâches complexes en utilisant Python.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-8148-b7f7-cb8a0fc598af" class="numbered-list" start="7"><li><strong>Traitement de Données en Temps Réel :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-811a-b901-d51512a7c415" class="bulleted-list"><li style="list-style-type:disc">Pour le traitement de données en temps réel, Apache Kafka et Apache Flink sont des choix courants, avec des API Python disponibles.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-813e-83e8-e35c9e14bd75" class="numbered-list" start="8"><li><strong>Visualisation de Données :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-8157-a564-fcacca5b6cc9" class="bulleted-list"><li style="list-style-type:disc">Des bibliothèques comme Matplotlib, Seaborn, et Plotly sont utilisées pour visualiser les données, ce qui est essentiel pour comprendre les tendances et les modèles dans les ensembles de données.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-8174-af35-d1a5c43e59a6" class="numbered-list" start="9"><li><strong>Machine Learning et Analyse Prédictive :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-8141-8d17-f29450578b9b" class="bulleted-list"><li style="list-style-type:disc">Python est largement utilisé pour les tâches de machine learning et d&#x27;analyse prédictive. Des bibliothèques telles que scikit-learn, TensorFlow, et PyTorch permettent le développement de modèles prédictifs.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-817e-a0df-eed0cc1af231" class="numbered-list" start="10"><li><strong>Stockage et Récupération de Données :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-813d-815f-ca45d93ddae5" class="bulleted-list"><li style="list-style-type:disc">Python facilite l&#x27;interaction avec divers systèmes de stockage de données tels que les entrepôts de données, les bases de données NoSQL, les systèmes de fichiers, et les services cloud.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-81d4-8bcf-e7c5c6113980" class="numbered-list" start="11"><li><strong>Déploiement :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-81cf-a7ea-f5ca70ded735" class="bulleted-list"><li style="list-style-type:disc">Des frameworks tels que Flask et FastAPI sont souvent utilisés pour exposer les résultats de l&#x27;ingénierie des données via des API, facilitant l&#x27;intégration avec d&#x27;autres systèmes.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="3278a87c-98a7-8117-8f34-d012a91b2ad6" class="numbered-list" start="12"><li><strong>Tests Unitaires et d&#x27;Intégration :</strong><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-81a2-9be4-eeabd7cf156a" class="bulleted-list"><li style="list-style-type:disc">Python offre des frameworks de test tels que pytest pour garantir la qualité des pipelines d&#x27;ingénierie des données.</li></ul></div></li></ol></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

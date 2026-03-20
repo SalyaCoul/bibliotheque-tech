@@ -1,0 +1,35 @@
+﻿Techno,Sélection,État
+PySpark,Traitement de données,Terminé
+Architecture de Streaming Continue,Architecture traitement de données,Terminé
+GCP,Cloud,Terminé
+dbt,Transformation de données,Terminé
+Microsoft Azure Synapse Analytics,Gestion Data Warehouse,Terminé
+Data Lake,Stockage de données,Terminé
+Data Warehouse,Stockage de données,Terminé
+Scala,Développement,Terminé
+CI/CD (contexte Data),DevOps,Terminé
+Kubernetes,DevOps,Terminé
+MongoDB,Base de données,Terminé
+ELT/ETL,Intégration de données,Terminé
+Talend,Intégration de données,Terminé
+Architecture Kappa,Architecture traitement de données,Terminé
+Pig,Traitement de données,Terminé
+Azure,Cloud,Terminé
+Architecture Lambda,Architecture traitement de données,Terminé
+AWS,Cloud,Terminé
+Snowflake,Gestion Data Warehouse,Terminé
+Google BigQuery,Gestion Data Warehouse,Terminé
+Python,Développement,Terminé
+Spark,Traitement de données,Terminé
+Hadoop,Traitement de données,Terminé
+Airflow,Gestion de flux,Terminé
+SQL,Base de données,Terminé
+Kafka,Streaming de données,Terminé
+Amazon Redshift,Gestion Data Warehouse,Terminé
+Docker,DevOps,Terminé
+Java,Développement,Terminé
+Comparaison,Stockage de données,Terminé
+SSIS,Intégration de données,Terminé
+DynamoDB,Base de données,Terminé
+Traitement de données distribuées,Traitement de données,Terminé
+MapReduce,Traitement de données,Terminé

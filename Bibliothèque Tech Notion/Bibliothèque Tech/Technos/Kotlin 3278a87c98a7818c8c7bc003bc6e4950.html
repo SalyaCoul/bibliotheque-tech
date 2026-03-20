@@ -1,0 +1,764 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Kotlin</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3278a87c-98a7-818c-8c7b-c003bc6e4950" class="page sans"><header><h1 class="page-title" dir="auto">Kotlin</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-status"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/burst_gray.svg" style="width:14px;height:14px;display:block"/></span>Statut</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Terminé</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>Type</th><td><span class="selected-value select-value-color-purple">Mobile</span></td></tr><tr class="property-row property-row-relation"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-northeast_gray.svg" style="width:14px;height:14px;display:block"/></span>élément parent</th><td><a href="Android%203278a87c98a781dc862ee05028cb0709.html">Android</a></td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="auto"><p id="14013ee9-11ef-4dc4-a000-5eb079ba36f0" class="">🎯 <strong>En bref</strong></p></div><div style="display:contents" dir="auto"><p id="9b0e25a4-2ad5-4eb2-a229-14ff36468ae7" class="">Kotlin est un langage moderne développé par JetBrains qui tourne sur la <strong>JVM</strong> (Java Virtual Machine), entièrement interopérable avec Java. Il est le langage <strong>officiel de Google pour Android</strong> depuis 2017 et se distingue par sa concision, sa null-safety intégrée et ses coroutines pour l&#x27;async.</p></div><div style="display:contents" dir="auto"><p id="25e3c9e2-5c88-482b-9b31-96955f2c53f4" class=""><strong>Analogie</strong></p></div><div style="display:contents" dir="auto"><p id="cc5df8ff-09b9-46fc-b46b-e1e957887cf7" class="">Java c&#x27;est comme conduire une voiture des années 90 : fiable, mais beaucoup de gestes manuels. Kotlin c&#x27;est la même voiture avec boîte automatique, parking assisté et régulateur de vitesse — même moteur (JVM), mais l&#x27;expérience est bien meilleure.</p></div><div style="display:contents" dir="auto"><p id="c6a6e09c-d7e3-4ed0-99ad-c2099792b302" class=""><strong>Utilisé par</strong></p></div><div style="display:contents" dir="auto"><p id="7fd31e4b-7921-45bf-9c0c-2a8dd3df9048" class="">Google (Android, backend), Pinterest, Trello, Uber, Slack — et la quasi-totalité des nouveaux projets Android depuis 2019.</p></div><div style="display:contents" dir="auto"><hr id="739c7558-23b3-4535-ad59-2d31b1d8f3a4"/></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-819e-8fd0-e1c00a0394ee" class="">Kotlin vs Java — Comparaison syntaxique</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fe949e47-5feb-4b62-91e2-eefad13f1e31" class="code code-wrap"><code class="language-Kotlin" style="white-space:pre-wrap;word-break:break-all">// Java
+public class User {
+    private String name;
+    private int age;
+    public User(String name, int age) { this.name = name; this.age = age; }
+    public String getName() { return name; }
+    public int getAge() { return age; }
+    // + hashCode, equals, toString...
+}
+
+// Kotlin — Data class équivalente (1 ligne !)
+data class User(val name: String, val age: Int)
+// Génère automatiquement : constructeur, getters, equals, hashCode, toString, copy()</code></pre></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-819e-8d1b-f198c9184650" class="">Fonctionnalités clés</h3></div><div style="display:contents" dir="ltr"><table id="a6c8dcf4-5fbf-4004-89b9-2536559edf36" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="d639bb50-2c04-4c66-94ee-6b570806938f"><th id="cPjN" class="simple-table-header-color simple-table-header">Fonctionnalité</th><th id="TQgG" class="simple-table-header-color simple-table-header">Description</th><th id="_hge" class="simple-table-header-color simple-table-header">Exemple</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="de815c4d-fe03-4b77-b704-b0fef300e6d7"><td id="cPjN" class=""><strong>Null Safety</strong></td><td id="TQgG" class="">Distinction compile-time entre nullable et non-nullable</td><td id="_hge" class=""><code>String</code> vs <code>String?</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="fdd510c8-862d-4326-bc45-2b38fd6c567d"><td id="cPjN" class=""><strong>Data Classes</strong></td><td id="TQgG" class="">Classes de données avec equals/hashCode/toString auto</td><td id="_hge" class=""><code>data class Point(val x: Int, val y: Int)</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="d9e5924d-f6ee-4be2-8c2b-4254047a43c6"><td id="cPjN" class=""><strong>Extension Functions</strong></td><td id="TQgG" class="">Étendre des classes sans héritage</td><td id="_hge" class=""><code>fun String.isPalindrome(): Boolean</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="0b33f8e5-1bd3-4c3d-840c-c236a623eb21"><td id="cPjN" class=""><strong>Coroutines</strong></td><td id="TQgG" class="">Async/await léger, suspend functions</td><td id="_hge" class=""><code>suspend fun fetchData(): Data</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="77e0ad9a-32d4-4834-a485-b5577b2f96ec"><td id="cPjN" class=""><strong>Smart Casts</strong></td><td id="TQgG" class="">Cast automatique après vérification de type</td><td id="_hge" class=""><code>if (x is String) x.length</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="85405c5f-ece9-4546-a1d4-8d043021e0cf"><td id="cPjN" class=""><strong>Sealed Classes</strong></td><td id="TQgG" class="">Hiérarchies fermées (idéal pour les états)</td><td id="_hge" class=""><code>sealed class Result</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="e67ad5e1-b1cc-413f-b042-63572c530c00"><td id="cPjN" class=""><strong>Lambdas</strong></td><td id="TQgG" class="">Fonctions de première classe concises</td><td id="_hge" class=""><code>list.filter { it &gt; 0 }</code></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-8180-a0c5-ea34332958d6" class="">Exemple pratique — Kotlin idiomatique</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2f4dd703-f096-4aee-a9e7-29feb87f38d0" class="code code-wrap"><code class="language-Kotlin" style="white-space:pre-wrap;word-break:break-all">// Null safety
+val name: String = &quot;Alice&quot;    // Non-nullable, ne peut pas être null
+val nickname: String? = null  // Nullable explicite
+
+val length = nickname?.length ?: 0  // Elvis operator : 0 si null
+
+// Extension function
+fun String.capitalize(): String = this.replaceFirstChar { it.uppercase() }
+val result = &quot;hello world&quot;.capitalize() // &quot;Hello world&quot;
+
+// Data class + copy
+data class User(val name: String, val age: Int, val active: Boolean = true)
+val alice = User(&quot;Alice&quot;, 30)
+val olderAlice = alice.copy(age = 31) // Copie immuable avec modification
+
+// Sealed class pour les états
+sealed class ApiResult&lt;T&gt; {
+    data class Success&lt;T&gt;(val data: T) : ApiResult&lt;T&gt;()
+    data class Error&lt;T&gt;(val message: String) : ApiResult&lt;T&gt;()
+    class Loading&lt;T&gt; : ApiResult&lt;T&gt;()
+}
+
+// When expression (exhaustif)
+fun handleResult(result: ApiResult&lt;User&gt;) = when (result) {
+    is ApiResult.Success -&gt; println(&quot;Utilisateur : ${result.data.name}&quot;)
+    is ApiResult.Error   -&gt; println(&quot;Erreur : ${result.message}&quot;)
+    is ApiResult.Loading -&gt; println(&quot;Chargement...&quot;)
+}</code></pre></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-8152-b1dc-e696f024c152" class="">Coroutines — Async simplifié</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e9db704a-2937-423f-9c4e-990041a299f7" class="code code-wrap"><code class="language-Kotlin" style="white-space:pre-wrap;word-break:break-all">import kotlinx.coroutines.*
+
+// suspend : fonction qui peut être suspendue sans bloquer le thread
+suspend fun fetchUser(id: Int): User {
+    delay(1000) // Simule un appel réseau (non-bloquant)
+    return User(&quot;Alice&quot;, 30)
+}
+
+// Lancement dans un scope coroutine
+fun main() = runBlocking {
+    // Lancement parallèle
+    val user1 = async { fetchUser(1) }
+    val user2 = async { fetchUser(2) }
+
+    println(&quot;${user1.await().name} et ${user2.await().name}&quot;)
+}</code></pre></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-8167-be75-f8e9446212d9" class="">Écosystème Kotlin</h3></div><div style="display:contents" dir="ltr"><table id="7345c5ca-334a-4bd5-b2e9-5176785b652e" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="b370f5ff-8cca-430d-be23-98c6011bef7d"><th id="ksca" class="simple-table-header-color simple-table-header">Domaine</th><th id="`pF{" class="simple-table-header-color simple-table-header">Technologie</th><th id="CVR}" class="simple-table-header-color simple-table-header">Description</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="b72294a0-eba1-4b78-bc47-697873b33fa0"><td id="ksca" class=""><strong>Android</strong></td><td id="`pF{" class="">Jetpack Compose</td><td id="CVR}" class="">UI déclarative native Android</td></tr></div><div style="display:contents" dir="ltr"><tr id="14ebbab3-918c-4d85-b268-250039275797"><td id="ksca" class=""><strong>Backend JVM</strong></td><td id="`pF{" class="">Ktor</td><td id="CVR}" class="">Framework HTTP Kotlin-first</td></tr></div><div style="display:contents" dir="ltr"><tr id="839af189-277e-4fea-99f1-7551f49d10c0"><td id="ksca" class=""><strong>Backend JVM</strong></td><td id="`pF{" class="">Spring Boot + Kotlin</td><td id="CVR}" class="">Combo populaire en enterprise</td></tr></div><div style="display:contents" dir="ltr"><tr id="c77c6aaf-fd60-432c-8310-3c32a90910bf"><td id="ksca" class=""><strong>Multiplatform</strong></td><td id="`pF{" class="">KMM (Kotlin Multiplatform)</td><td id="CVR}" class="">Code partagé iOS/Android</td></tr></div><div style="display:contents" dir="ltr"><tr id="aec4238b-ba8c-4bec-aedb-0561c932984b"><td id="ksca" class=""><strong>JS</strong></td><td id="`pF{" class="">Kotlin/JS</td><td id="CVR}" class="">Compile vers JavaScript</td></tr></div><div style="display:contents" dir="ltr"><tr id="7ee7b9b4-b4de-4b56-bb9e-faf7f8173e54"><td id="ksca" class=""><strong>Natif</strong></td><td id="`pF{" class="">Kotlin/Native</td><td id="CVR}" class="">Compile vers binaire natif</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-8158-8d30-f7f75f3905d9" class="">Avantages et inconvénients</h3></div><div style="display:contents" dir="ltr"><table id="a2e72863-0003-4244-a1f5-86857e30615a" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="0b168f43-2f75-441d-98ea-73f6af845626"><th id=";w?^" class="simple-table-header-color simple-table-header">✅ Avantages</th><th id="`]gX" class="simple-table-header-color simple-table-header">❌ Inconvénients</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="d21e7972-20ea-48db-8a8b-b0d49553cc0f"><td id=";w?^" class="">Null safety compile-time (fini les NPE)</td><td id="`]gX" class="">Temps de compilation plus long que Java</td></tr></div><div style="display:contents" dir="ltr"><tr id="1c46540e-e8fa-4288-a90b-154d8df1e898"><td id=";w?^" class="">Code 2-3x plus concis que Java</td><td id="`]gX" class="">Courbe d&#x27;apprentissage pour les devs Java (patterns idiomatiques)</td></tr></div><div style="display:contents" dir="ltr"><tr id="1da6d75f-5cf6-4a49-bd80-11b5304af1fe"><td id=";w?^" class="">100% interopérable avec Java</td><td id="`]gX" class="">Coroutines : concept nouveau à maîtriser</td></tr></div><div style="display:contents" dir="ltr"><tr id="a629b2cf-5de7-4e94-97fe-9291edbe31a7"><td id=";w?^" class="">Coroutines : async simple et performant</td><td id="`]gX" class="">Moins universel que Java dans l&#x27;écosystème enterprise historique</td></tr></div><div style="display:contents" dir="ltr"><tr id="fa810fd5-58c6-497c-aae5-8d7c47b892c6"><td id=";w?^" class="">Standard officiel Android</td><td id="`]gX" class="">—</td></tr></div></tbody></table></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

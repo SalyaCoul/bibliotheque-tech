@@ -1,0 +1,76 @@
+﻿Technos,Sous-élément,Statut,Type,élément parent
+Vue.js,,Terminé,Bibliothèques,
+Next.js,,Terminé,Framework,
+JEST,,Terminé,Testing,
+Mocha,,Terminé,Testing,
+GraphQL,,Terminé,Gestion APIs,
+API SOAP,,Terminé,Gestion APIs,
+Laravel,,Terminé,Framework,
+Node.js,,Terminé,Environnement de Développement,
+Flutter,Dart (Biblioth%C3%A8que%20Tech/Technos/Dart%203278a87c98a781a0a820d825ee66f30e.html),Terminé,Mobile,Cross-Platform (Biblioth%C3%A8que%20Tech/Technos/Cross-Platform%203278a87c98a7812f8168e09b2fe210f2.html)
+Server Side Rendering (SSR),,Pas commencé,,
+RabbitMQ,,Terminé,Message Broker,
+Mithril,,Terminé,Bibliothèques,
+ReactJS,,Terminé,Bibliothèques,
+Architecture Microservices,,Terminé,Architecture,
+Autres types d’APIs,,Terminé,Gestion APIs,
+Ember.js,,Terminé,Framework,
+"Autres outils ",,Terminé,Qualité de code,
+Swift,RxSwift (Biblioth%C3%A8que%20Tech/Technos/RxSwift%203278a87c98a78154be24ddc3efefc3a2.html),Terminé,Mobile,iOS (Biblioth%C3%A8que%20Tech/Technos/iOS%203278a87c98a781689616c8f0599dcceb.html)
+Kotlin Multiplatform Mobile,,Terminé,Mobile,Cross-Platform (Biblioth%C3%A8que%20Tech/Technos/Cross-Platform%203278a87c98a7812f8168e09b2fe210f2.html)
+Android,"Kotlin (Biblioth%C3%A8que%20Tech/Technos/Kotlin%203278a87c98a7818c8c7bc003bc6e4950.html), Java (Biblioth%C3%A8que%20Tech/Technos/Java%203278a87c98a781af9210efeb16f3c54f.html)",Pas commencé,Mobile,
+Electron,,Terminé,Environnement de Développement,
+Remix,,Terminé,Framework,
+Linter,,Terminé,Qualité de code,
+Bun.js,,Terminé,Environnement de Développement,
+Memcached,,Terminé,Gestion de cache,
+Architecture Monolithique,,Terminé,Architecture,
+Xamarin,,Terminé,Mobile,Cross-Platform (Biblioth%C3%A8que%20Tech/Technos/Cross-Platform%203278a87c98a7812f8168e09b2fe210f2.html)
+API WebSocket,,Terminé,Gestion APIs,
+Autres outils de test,,Terminé,Testing,
+Preact,,Terminé,Bibliothèques,
+TypeScript,,Terminé,Langages,
+Prettier,,Terminé,Qualité de code,
+Amazon Simple Queue Service (SQS),,Terminé,Message Broker,
+RxSwift,,Pas commencé,Bibliothèques,Swift (Biblioth%C3%A8que%20Tech/Technos/Swift%203278a87c98a78176a746c55f4d0bc1dd.html)
+Symfony,,Terminé,Framework,
+Cache,,Terminé,Gestion de cache,
+Cordova,,Terminé,Mobile,Cross-Platform (Biblioth%C3%A8que%20Tech/Technos/Cross-Platform%203278a87c98a7812f8168e09b2fe210f2.html)
+Dart,,Terminé,Mobile,Flutter (Biblioth%C3%A8que%20Tech/Technos/Flutter%203278a87c98a781cc92b3e3586e93437d.html)
+Java,,Terminé,Mobile,Android (Biblioth%C3%A8que%20Tech/Technos/Android%203278a87c98a781dc862ee05028cb0709.html)
+BDD relationnelles,,Terminé,Bases de données,
+Angular,,Terminé,Framework,
+ESlint,,Terminé,Qualité de code,
+Behat,,Terminé,Testing,
+EcmaScript,,Terminé,Normes/modèles de programmation,
+iOS,"Swift (Biblioth%C3%A8que%20Tech/Technos/Swift%203278a87c98a78176a746c55f4d0bc1dd.html), Objectif-C (Biblioth%C3%A8que%20Tech/Technos/Objectif-C%203278a87c98a781b18846e4dd236db41f.html)",Terminé,Mobile,
+BDD non relationnelles,,Terminé,Bases de données,
+Kotlin,,Terminé,Mobile,Android (Biblioth%C3%A8que%20Tech/Technos/Android%203278a87c98a781dc862ee05028cb0709.html)
+PHPUnit,,Terminé,Testing,
+Objectif-C,,Terminé,Mobile,iOS (Biblioth%C3%A8que%20Tech/Technos/iOS%203278a87c98a781689616c8f0599dcceb.html)
+NestJS,,Terminé,Framework,
+Clean Architecture,,Terminé,Architecture,
+"JavaScript ",,Terminé,Langages,
+Cypress,,Terminé,Testing,
+Varnish,,Terminé,Gestion de cache,
+Autres styles de programmation,,Terminé,Normes/modèles de programmation,
+PHP,,Terminé,Langages,
+Redis,,Terminé,Gestion de cache,
+ZeroMQ,,Terminé,Message Broker,
+Programmation orientée objet,,Terminé,Normes/modèles de programmation,
+Astro.js,,Terminé,Framework,
+Deno,,Terminé,Environnement de Développement,
+API REST,,Terminé,Gestion APIs,
+Apache Kafka,,Terminé,Message Broker,
+Cross-Platform,"React Native (Biblioth%C3%A8que%20Tech/Technos/React%20Native%203278a87c98a781da85c1eb8b4903393e.html), Expo (Biblioth%C3%A8que%20Tech/Technos/Expo%203288a87c98a7811a995ee4392aa9a42d.html), Flutter (Biblioth%C3%A8que%20Tech/Technos/Flutter%203278a87c98a781cc92b3e3586e93437d.html), Cordova (Biblioth%C3%A8que%20Tech/Technos/Cordova%203278a87c98a7819dbde2f7491f4b8ea2.html), Capacitor (Biblioth%C3%A8que%20Tech/Technos/Capacitor%203288a87c98a781e48fa5fa26144c9b8f.html), Kotlin Multiplatform Mobile (Biblioth%C3%A8que%20Tech/Technos/Kotlin%20Multiplatform%20Mobile%203278a87c98a781a3ab45d0158d02500b.html), Xamarin (Biblioth%C3%A8que%20Tech/Technos/Xamarin%203278a87c98a78163b9e6e7df8a91dc26.html)",Pas commencé,Mobile,
+Nuxt.js,,Terminé,Framework,
+Svelte,,Terminé,Bibliothèques,
+React Native,,Terminé,Mobile,Cross-Platform (Biblioth%C3%A8que%20Tech/Technos/Cross-Platform%203278a87c98a7812f8168e09b2fe210f2.html)
+Express.js,,Terminé,Framework,
+Architecture Hexagonale,,Terminé,Architecture,
+Expo,,Terminé,Mobile,Cross-Platform (Biblioth%C3%A8que%20Tech/Technos/Cross-Platform%203278a87c98a7812f8168e09b2fe210f2.html)
+Capacitor,,Terminé,Mobile,Cross-Platform (Biblioth%C3%A8que%20Tech/Technos/Cross-Platform%203278a87c98a7812f8168e09b2fe210f2.html)
+Vite,,Terminé,Outils de build,
+npm / pnpm / Yarn,,Terminé,Outils de build,
+Webpack,,Terminé,Outils de build,
+Composer,,Terminé,Outils de build,

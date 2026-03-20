@@ -1,0 +1,33 @@
+﻿Nom,Type,État
+PowerShell,Automatisation et Scripting,Terminé
+Virtualisation,Virtualisation,Terminé
+Ansible,Gestion de Configuration,Terminé
+Git,Gestion des Versions et Dépendances,Terminé
+Terraform,Infra as Code,Terminé
+SaltStack,Gestion de Configuration,Terminé
+Prometheus,Surveillance et Logging,Terminé
+Déploiement Continu,CI/CD,Terminé
+VirtualBox,Virtualisation,Terminé
+ElasticSearch,Surveillance et Logging,Terminé
+VMWare,Virtualisation,Terminé
+Gitlab CI,CI/CD,Terminé
+Kibana,Surveillance et Logging,Terminé
+Chef,Gestion de Configuration,Terminé
+Kubernetes,Conteneurisation,Terminé
+Proxmox Virtual Environment,Virtualisation,Terminé
+TravisCI,CI/CD,Terminé
+Scripting,Automatisation et Scripting,Terminé
+Puppet,Gestion de Configuration,Terminé
+Docker,Conteneurisation,Terminé
+Intégration Continue,CI/CD,Terminé
+Hyper-V,Virtualisation,Terminé
+Logstash,Surveillance et Logging,Terminé
+GitHub,Gestion des Versions et Dépendances,Terminé
+Python,Automatisation et Scripting,Terminé
+Gitlab,Gestion des Versions et Dépendances,Terminé
+Jenkins,CI/CD,Terminé
+CircleCI,CI/CD,Terminé
+Grafana,Surveillance et Logging,Terminé
+Gestion de Configuration,Gestion de Configuration,Terminé
+Bash/Shell,Automatisation et Scripting,Terminé
+,,Pas commencé

@@ -1,0 +1,754 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Gestion de Configuration</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3278a87c-98a7-81f8-b562-ce03d1f29362" class="page sans"><header><h1 class="page-title" dir="auto">Gestion de Configuration</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Type</th><td><span class="selected-value select-value-color-pink">Gestion de Configuration</span></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/burst_gray.svg" style="width:14px;height:14px;display:block"/></span>État</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Terminé</span></td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="auto"><p id="26191c04-192b-4038-bf89-9660db64cc03" class="">🎯 <strong>En bref</strong></p></div><div style="display:contents" dir="auto"><p id="3eaa1739-256e-40fd-a312-bd0d85a4ed8c" class="">La gestion de configuration (Configuration Management) est la pratique qui consiste à <strong>décrire, versionner et automatiser l&#x27;état désiré des serveurs et infrastructures</strong>. Au lieu de configurer manuellement chaque machine, on définit ce qu&#x27;elle doit être (logiciels installés, fichiers présents, services actifs) et des outils l&#x27;y amènent automatiquement.</p></div><div style="display:contents" dir="auto"><p id="6363127c-7a82-41c0-813e-f7f76b1c5417" class=""><strong>Analogie</strong></p></div><div style="display:contents" dir="auto"><p id="8d0908bc-075e-4c08-817d-4162d2ef1daf" class="">Configurer des serveurs à la main, c&#x27;est comme préparer chaque plat d&#x27;un restaurant à la main avec chaque cuisinier qui a sa propre recette. La gestion de configuration, c&#x27;est le livre de recettes standardisé que tous les cuisiniers suivent à la lettre — chaque plat est identique, reproductible, et si un nouveau cuisinier arrive, il peut recréer n&#x27;importe quel plat instantanément.</p></div><div style="display:contents" dir="auto"><p id="c7ac325b-b841-4789-8287-c94d3107accf" class=""><strong>Utilisé par</strong></p></div><div style="display:contents" dir="auto"><p id="9b3dda4a-eb0a-4725-8d23-3d12711471c7" class="">Google, Facebook, Twitter, Netflix — toute organisation gérant plus de quelques dizaines de serveurs. Indispensable à partir d&#x27;une certaine échelle pour éviter la &quot;configuration drift&quot; (chaque serveur qui diverge subtilement des autres).</p></div><div style="display:contents" dir="auto"><hr id="69b4c72d-71c9-4d4a-b44b-f9002e1fa5b5"/></div><div style="display:contents" dir="auto"><h3 id="d35d2462-29e6-47f2-92a0-cb3503e476ba" class="">Le problème que ça résout : Configuration Drift</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5a9de912-1c5c-4a9c-9811-a27ab4309853" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">Situation SANS gestion de configuration :
+Serveur A : nginx 1.18, PHP 8.1, config modifiée manuellement il y a 6 mois
+Serveur B : nginx 1.20, PHP 8.2, config &quot;standard&quot;
+Serveur C : nginx 1.18, PHP 8.1, patch de sécurité manquant
+
+→ Comportements imprévisibles, bugs impossibles à reproduire
+
+Situation AVEC gestion de configuration :
+Tous les serveurs → même état défini dans le code → identiques et prévisibles</code></pre></div><div style="display:contents" dir="auto"><h3 id="0d7b94b9-110e-401f-ab39-df744da7e0d8" class="">Approches : Déclarative vs Impérative</h3></div><div style="display:contents" dir="ltr"><table id="0fa25171-eb35-417d-94a9-2b6bbd4816b1" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="a85f0f6d-8d92-4f6b-b3f7-fe579814b413"><th id="mUU?" class="simple-table-header-color simple-table-header">Approche</th><th id="U}Q@" class="simple-table-header-color simple-table-header">Principe</th><th id="gVaa" class="simple-table-header-color simple-table-header">Outil</th><th id="[d=Y" class="simple-table-header-color simple-table-header">Exemple</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="ea22ccec-106d-4e41-9051-20a638e79e89"><td id="mUU?" class=""><strong>Déclarative</strong></td><td id="U}Q@" class="">On décrit l&#x27;état final désiré, l&#x27;outil trouve comment y arriver</td><td id="gVaa" class="">Puppet, Chef, Ansible (en partie)</td><td id="[d=Y" class="">&quot;nginx doit être installé et démarré&quot;</td></tr></div><div style="display:contents" dir="ltr"><tr id="95c42ddd-abc0-4f40-98ee-9bfd5237db14"><td id="mUU?" class=""><strong>Impérative</strong></td><td id="U}Q@" class="">On décrit les étapes à exécuter dans l&#x27;ordre</td><td id="gVaa" class="">Scripts bash, Ansible (tasks)</td><td id="[d=Y" class="">&quot;apt install nginx &amp;&amp; systemctl start nginx&quot;</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-813b-afe5-f25273e1486a" class="">Exemple Ansible (outil le plus populaire)</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a5a2eebb-01df-4650-a3c7-f66411d429d4" class="code code-wrap"><code class="language-YAML" style="white-space:pre-wrap;word-break:break-all"># playbook.yml — Décrire l&#x27;état désiré d&#x27;un serveur web
+---
+- name: Configurer le serveur web
+  hosts: web_servers
+  become: yes  # sudo
+
+  vars:
+    nginx_port: 80
+    app_user: deploy
+
+  tasks:
+    - name: Installer Nginx
+      apt:
+        name: nginx
+        state: present   # &quot;présent&quot; = installé
+
+    - name: Copier la configuration
+      template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/nginx.conf
+      notify: Redémarrer Nginx
+
+    - name: S&#x27;assurer que Nginx est démarré
+      service:
+        name: nginx
+        state: started
+        enabled: yes     # Au démarrage du serveur
+
+  handlers:
+    - name: Redémarrer Nginx
+      service:
+        name: nginx
+        state: restarted</code></pre></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b0a6db55-7b00-4966-b768-730ce2ff9ebf" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all"># Appliquer sur tous les serveurs de production
+ansible-playbook -i inventaire/prod.yml playbook.yml
+
+# Dry-run : voir ce qui changerait sans appliquer
+ansible-playbook -i inventaire/prod.yml playbook.yml --check</code></pre></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-8126-9301-f65c7a02e8ad" class="">Les principaux outils</h3></div><div style="display:contents" dir="ltr"><table id="0ad40056-6b58-4c4a-9330-54aa6b15abd2" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="41e98c0a-2c19-410a-bea2-5c8d16d3f013"><th id="}XR|" class="simple-table-header-color simple-table-header">Outil</th><th id="nNIa" class="simple-table-header-color simple-table-header">Langage</th><th id="TSAO" class="simple-table-header-color simple-table-header">Architecture</th><th id=":}&lt;R" class="simple-table-header-color simple-table-header">Courbe</th><th id="XZMj" class="simple-table-header-color simple-table-header">Points forts</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="f3bfc5fe-559b-4efb-bae5-2d5cb068c114"><td id="}XR|" class=""><strong>Ansible</strong></td><td id="nNIa" class="">YAML</td><td id="TSAO" class="">Agentless (SSH)</td><td id=":}&lt;R" class="">Faible</td><td id="XZMj" class="">Simple, sans agent, idéal pour débuter</td></tr></div><div style="display:contents" dir="ltr"><tr id="c380f14e-02ae-4888-8fad-3b622c9940bd"><td id="}XR|" class=""><strong>Puppet</strong></td><td id="nNIa" class="">DSL Puppet</td><td id="TSAO" class="">Master/Agent</td><td id=":}&lt;R" class="">Élevée</td><td id="XZMj" class="">Robuste, certifications, grande communauté</td></tr></div><div style="display:contents" dir="ltr"><tr id="cdf76a21-8439-4d17-988b-e60a5569f674"><td id="}XR|" class=""><strong>Chef</strong></td><td id="nNIa" class="">Ruby (DSL)</td><td id="TSAO" class="">Master/Agent</td><td id=":}&lt;R" class="">Élevée</td><td id="XZMj" class="">Très flexible, aimé des développeurs Ruby</td></tr></div><div style="display:contents" dir="ltr"><tr id="9152c9d1-0235-4750-8ba2-fd48c545278a"><td id="}XR|" class=""><strong>SaltStack</strong></td><td id="nNIa" class="">YAML + Python</td><td id="TSAO" class="">Master/Minion</td><td id=":}&lt;R" class="">Moyenne</td><td id="XZMj" class="">Ultra-rapide, temps réel sur gros parcs</td></tr></div><div style="display:contents" dir="ltr"><tr id="92d5ed5a-120a-43ea-afcd-480d21c84a97"><td id="}XR|" class=""><strong>Terraform</strong></td><td id="nNIa" class="">HCL</td><td id="TSAO" class="">Agentless</td><td id=":}&lt;R" class="">Moyenne</td><td id="XZMj" class="">Infrastructure cloud (pas config des OS)</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-818c-b707-c83476e0be5d" class="">Avantages et inconvénients</h3></div><div style="display:contents" dir="ltr"><table id="8e6060fe-2bc3-402f-b647-ee7cfc89ec24" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="58bfef08-d87a-4918-a922-f120bafbe322"><th id="YMJh" class="simple-table-header-color simple-table-header">✅ Avantages</th><th id="\I?@" class="simple-table-header-color simple-table-header">❌ Inconvénients</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="0cda3846-23f8-4dbd-b7c3-26a870e9cef3"><td id="YMJh" class="">Infrastructure reproductible à l&#x27;identique</td><td id="\I?@" class="">Courbe d&#x27;apprentissage initiale</td></tr></div><div style="display:contents" dir="ltr"><tr id="de42398c-95ef-494b-b652-43d53eda0995"><td id="YMJh" class="">Zéro configuration manuelle = zéro oubli</td><td id="\I?@" class="">Nécessite une discipline d&#x27;équipe</td></tr></div><div style="display:contents" dir="ltr"><tr id="b913942f-00db-4b8a-a91c-eaae4392ac2e"><td id="YMJh" class="">Audit complet : qui a changé quoi, quand</td><td id="\I?@" class="">Complexité pour les cas très spécifiques</td></tr></div><div style="display:contents" dir="ltr"><tr id="5227da5b-7b7a-4c1b-8d25-327cc611c493"><td id="YMJh" class="">Scalabilité : 1 ou 10 000 serveurs, même effort</td><td id="\I?@" class="">Peut entrer en conflit avec des modifications manuelles</td></tr></div><div style="display:contents" dir="ltr"><tr id="03dedd1e-22b4-4aff-b28e-a48c89180c1b"><td id="YMJh" class="">Code versionné dans Git = historique complet</td><td id="\I?@" class="">—</td></tr></div></tbody></table></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

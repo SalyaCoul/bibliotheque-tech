@@ -1,0 +1,734 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Programmation orientée objet</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3278a87c-98a7-8189-8e71-ff7e5b770eae" class="page sans"><header><h1 class="page-title" dir="auto">Programmation orientée objet</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-status"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/burst_gray.svg" style="width:14px;height:14px;display:block"/></span>Statut</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Terminé</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>Type</th><td><span class="selected-value select-value-color-gray">Normes/modèles de programmation</span></td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="auto"><p id="864fdeb6-a004-4c2a-a94e-573d50d79098" class="">🎯 <strong>En bref</strong></p></div><div style="display:contents" dir="auto"><p id="562a890c-7762-4908-b2fc-b7714714c995" class="">La POO est un paradigme qui organise le code autour d&#x27;<strong>objets</strong> — des entités autonomes qui regroupent des données (attributs) et des comportements (méthodes). Elle repose sur 4 piliers fondamentaux : <strong>encapsulation, héritage, polymorphisme et abstraction</strong>.</p></div><div style="display:contents" dir="auto"><p id="f845833b-3b2a-40c4-89c3-c6044078308f" class=""><strong>Analogie</strong></p></div><div style="display:contents" dir="auto"><p id="d880f3db-9ff3-449d-9c0d-9995e13d6f61" class="">Imaginez une voiture : elle a des attributs (couleur, marque, vitesse) et des comportements (démarrer, freiner, accélérer). En POO, vous créez un &quot;moule&quot; (la classe <code>Voiture</code>) et vous l&#x27;utilisez pour fabriquer autant d&#x27;instances que nécessaire, chacune avec ses propres valeurs.</p></div><div style="display:contents" dir="auto"><p id="780bead2-7763-4727-844f-ed92ad13bf02" class=""><strong>Utilisé par</strong></p></div><div style="display:contents" dir="auto"><p id="76331165-9b21-45fb-bc3a-6abcd99694c7" class="">Tous les langages modernes : Java, Python, C#, PHP, JavaScript/TypeScript, Kotlin, Swift, C++.</p></div><div style="display:contents" dir="auto"><hr id="e82aeff9-6328-47ac-87e0-fed633816f7c"/></div><div style="display:contents" dir="auto"><h3 id="414f6a51-8427-4564-9ffd-2f72852ff88b" class="">Les 4 piliers de la POO</h3></div><div style="display:contents" dir="ltr"><table id="58d99f03-a952-46dc-b362-b663058c331b" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="10a011ec-c9a0-4b2b-9db5-d34b49631dfa"><th id="QJIm" class="simple-table-header-color simple-table-header">Pilier</th><th id="ge;`" class="simple-table-header-color simple-table-header">Description</th><th id="HJ\Q" class="simple-table-header-color simple-table-header">Exemple concret</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2b7824d7-aa64-40d2-a755-ac10837fd537"><td id="QJIm" class=""><strong>Encapsulation</strong></td><td id="ge;`" class="">Cacher les données internes, exposer une interface claire</td><td id="HJ\Q" class="">Attributs <code>private</code>  • getters/setters</td></tr></div><div style="display:contents" dir="ltr"><tr id="4850f4ec-ba0e-468c-90f7-bc79b8808ec7"><td id="QJIm" class=""><strong>Héritage</strong></td><td id="ge;`" class="">Une classe enfant hérite des propriétés d&#x27;une classe parent</td><td id="HJ\Q" class=""><code>class Chien extends Animal</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="a42899ba-3109-471c-97ec-86088348befd"><td id="QJIm" class=""><strong>Polymorphisme</strong></td><td id="ge;`" class="">Un même appel se comporte différemment selon le type de l&#x27;objet</td><td id="HJ\Q" class=""><code>animal.parler()</code> → &quot;Woof&quot; ou &quot;Miaou&quot;</td></tr></div><div style="display:contents" dir="ltr"><tr id="529d589f-4d6a-4b37-a790-ddf3437f8185"><td id="QJIm" class=""><strong>Abstraction</strong></td><td id="ge;`" class="">Masquer la complexité, n&#x27;exposer que l&#x27;essentiel</td><td id="HJ\Q" class="">Classes abstraites, interfaces</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="bdafe3a6-1885-4dba-9233-3e2acd17693a" class="">Exemple en TypeScript</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f1197d82-693b-483e-8d96-5d68ba7ee037" class="code code-wrap"><code class="language-TypeScript" style="white-space:pre-wrap;word-break:break-all">// Classe abstraite → Abstraction
+abstract class Animal {
+    constructor(protected nom: string) {} // Encapsulation
+
+    abstract parler(): string; // Polymorphisme
+
+    sePresenter(): string {
+        return `Je m&#x27;appelle ${this.nom} et je dis : ${this.parler()}`;
+    }
+}
+
+// Héritage
+class Chien extends Animal {
+    parler(): string { return &quot;Woof !&quot;; }
+}
+
+class Chat extends Animal {
+    parler(): string { return &quot;Miaou !&quot;; }
+}
+
+// Polymorphisme en action
+const animaux: Animal[] = [new Chien(&quot;Rex&quot;), new Chat(&quot;Félix&quot;)];
+animaux.forEach(a =&gt; console.log(a.sePresenter()));
+// &quot;Je m&#x27;appelle Rex et je dis : Woof !&quot;
+// &quot;Je m&#x27;appelle Félix et je dis : Miaou !&quot;</code></pre></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-81d1-a226-e7584ab17f0e" class="">POO vs autres paradigmes</h3></div><div style="display:contents" dir="ltr"><table id="cf6e4ca7-ed02-46cf-89eb-b76c215e8064" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="52b91e80-2b41-4fcf-97fb-b5cdb15d5121"><th id="FHT&lt;" class="simple-table-header-color simple-table-header">Paradigme</th><th id="^m&lt;h" class="simple-table-header-color simple-table-header">Principe</th><th id="_@^_" class="simple-table-header-color simple-table-header">Avantage principal</th><th id="?&gt;&lt;q" class="simple-table-header-color simple-table-header">Idéal pour</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="f242ba1a-a697-48c9-a254-efd30efd60f1"><td id="FHT&lt;" class=""><strong>Procédural</strong></td><td id="^m&lt;h" class="">Séquence d&#x27;instructions</td><td id="_@^_" class="">Simplicité</td><td id="?&gt;&lt;q" class="">Scripts, petits programmes</td></tr></div><div style="display:contents" dir="ltr"><tr id="a98425a4-5e81-4224-b176-9dca36d3f642"><td id="FHT&lt;" class=""><strong>Orienté Objet</strong></td><td id="^m&lt;h" class="">Objets avec état et comportement</td><td id="_@^_" class="">Modélisation naturelle, réutilisabilité</td><td id="?&gt;&lt;q" class="">Applications métier complexes</td></tr></div><div style="display:contents" dir="ltr"><tr id="ff1d3293-7367-46c8-813c-f44fedf33602"><td id="FHT&lt;" class=""><strong>Fonctionnel</strong></td><td id="^m&lt;h" class="">Fonctions pures, immutabilité</td><td id="_@^_" class="">Prédictibilité, facilité de test</td><td id="?&gt;&lt;q" class="">Traitement de données, concurrence</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-81df-ad3e-f1fd9bcdc3b6" class="">Principes SOLID</h3></div><div style="display:contents" dir="auto"><p id="3278a87c-98a7-8132-86db-d65801232681" class="">Les 5 principes fondamentaux pour une bonne conception OOP :</p></div><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-8100-bc1b-c7144252dc54" class="bulleted-list"><li style="list-style-type:disc"><strong>S</strong> — <em>Single Responsibility</em> : une classe = une seule responsabilité</li></ul></div><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-81fa-8dfa-cbf683d59ec9" class="bulleted-list"><li style="list-style-type:disc"><strong>O</strong> — <em>Open/Closed</em> : ouvert à l&#x27;extension, fermé à la modification</li></ul></div><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-816b-bcf6-f0f9d65da3da" class="bulleted-list"><li style="list-style-type:disc"><strong>L</strong> — <em>Liskov Substitution</em> : une sous-classe doit pouvoir remplacer sa classe parente</li></ul></div><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-81dc-8360-ff29c16a787d" class="bulleted-list"><li style="list-style-type:disc"><strong>I</strong> — <em>Interface Segregation</em> : plusieurs interfaces spécifiques valent mieux qu&#x27;une grande interface générale</li></ul></div><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-818b-803c-eda99d59fed3" class="bulleted-list"><li style="list-style-type:disc"><strong>D</strong> — <em>Dependency Inversion</em> : dépendre des abstractions, pas des implémentations concrètes</li></ul></div><div style="display:contents" dir="auto"><h3 id="3278a87c-98a7-81dc-ac36-fdc97ecbbc57" class="">Bonnes pratiques</h3></div><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-81f2-9cd6-d93ff0c442f5" class="bulleted-list"><li style="list-style-type:disc">Préférer la <strong>composition</strong> à l&#x27;héritage profond pour plus de flexibilité</li></ul></div><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-81b2-9d1c-c6a05f7aeec7" class="bulleted-list"><li style="list-style-type:disc">Respecter l&#x27;<strong>encapsulation</strong> : ne pas exposer l&#x27;état interne inutilement (<code>private</code> par défaut)</li></ul></div><div style="display:contents" dir="auto"><ul id="3278a87c-98a7-81ee-b034-f5556972d98d" class="bulleted-list"><li style="list-style-type:disc">Utiliser les <strong>interfaces</strong> pour découpler et faciliter les tests (injection de dépendances)</li></ul></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

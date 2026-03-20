@@ -1,0 +1,35 @@
+﻿Nom,Catégorie
+YOLO,Vision & Audio
+scikit-learn,Frameworks & Librairies
+GPT/OpenAI,LLM & Génération
+MLflow,MLOPS
+Embeddings,Vectorisation & Recherche
+OpenCV,Vision & Audio
+TensorFlow,Frameworks & Librairies
+PyTorch,Frameworks & Librairies
+Keras,Frameworks & Librairies
+Hugging Face Transformers,Frameworks & Librairies
+XGBoost,Frameworks & Librairies
+LangChain,LLM & Génération
+LlamaIndex,LLM & Génération
+Ollama,LLM & Génération
+Mistral,LLM & Génération
+Claude API,LLM & Génération
+RAG,LLM & Génération
+Prompt Engineering,LLM & Génération
+Weights & Biases,MLOPS
+Kuberflow,MLOPS
+ONNX,MLOPS
+Pinecone,Vectorisation & Recherche
+ChromaDB,Vectorisation & Recherche
+FAISS,Vectorisation & Recherche
+Weaviate,Vectorisation & Recherche
+Whisper,Vision & Audio
+Stable Diffusion,Vision & Audio
+Réseaux de neurones,Architecture & Concepts
+Transformers,Architecture & Concepts
+Fine-tuning,Architecture & Concepts
+Transfer Learning,Architecture & Concepts
+"Feature Engineering ",Architecture & Concepts
+Reinforcement Learning,Architecture & Concepts
+BentoML,MLOPS
