@@ -9,6 +9,7 @@ Arrivant dans un environnement à forte culture technique, j'ai voulu comprendre
 Les domaines couverts reflètent directement les expertises d'Eleven Labs : développement JS & PHP, DevOps, Data Engineering, Produit & Agilité, QA, et plus récemment Intelligence Artificielle.
 
 🗂️ Structure de la bibliothèque
+
 La bibliothèque est organisée en plusieurs grandes parties, chacune combinant des fiches de rôles métier (en texte libre) et des bases de données de technologies (entrées structurées).
 Chaque fiche technologie suit un format standard pour faciliter la compréhension :
 🎯 En bref     — description concise en 2-3 phrases
@@ -33,7 +34,13 @@ Base de données (34 entrées) : Spark, Hadoop, Kafka, Airflow, dbt, Snowflake, 
 🤖 Intelligence Artificielle (section récente)
 Rôles couverts : Data Scientist, ML Engineer, AI Engineer, MLOps Engineer, LLM Engineer / Prompt Engineer, AI Research Scientist.
 Base de données (34 entrées) organisée en 6 catégories :
-CatégorieExemples🔵 Frameworks & Librairiesscikit-learn, TensorFlow, PyTorch, Keras, Hugging Face, XGBoost🟣 LLM & GénérationGPT / OpenAI API, LangChain, LlamaIndex, Ollama, Mistral, RAG, Prompt Engineering, Claude API🟠 MLOpsMLflow, Weights & Biases, Kubeflow, BentoML, ONNX🟢 Vectorisation & RechercheEmbeddings, Pinecone, ChromaDB, FAISS, Weaviate🩷 Vision & AudioOpenCV, YOLO, Whisper, Stable Diffusion⚫ Architecture & ConceptsRéseaux de neurones, Transformers, Fine-tuning, Transfer Learning, Feature Engineering, Reinforcement Learning
+Catégorie Exemples 
+🔵 Frameworks & Librairiesscikit-learn, TensorFlow, PyTorch, Keras, Hugging Face, XGBoost
+🟣 LLM & GénérationGPT / OpenAI API, LangChain, LlamaIndex, Ollama, Mistral, RAG, Prompt Engineering, Claude API
+🟠 MLOpsMLflow, Weights & Biases, Kubeflow, BentoML, ONNX
+🟢 Vectorisation & RechercheEmbeddings, Pinecone, ChromaDB, FAISS, Weaviate
+🩷 Vision & AudioOpenCV, YOLO, Whisper, Stable Diffusion⚫
+Architecture & Concepts Réseaux de neurones, Transformers, Fine-tuning, Transfer Learning, Feature Engineering, Reinforcement Learning
 
 📋 Produit & Agilité
 Rôles couverts : Product Owner, Product Manager, Scrum Master.
