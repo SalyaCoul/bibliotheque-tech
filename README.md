@@ -4,6 +4,7 @@ Une base de connaissances tech complète, pensée pour monter en compétences ra
 
 
 🧭 Contexte & Origine
+
 Ce projet est né lors de mon passage chez Eleven Labs, cabinet de conseil tech spécialisé en développement web, data et accompagnement agile.
 Arrivant dans un environnement à forte culture technique, j'ai voulu comprendre en profondeur les métiers, les outils et les concepts que j'entendais au quotidien, sans rester en surface. J'ai donc construit cette bibliothèque progressivement, d'abord à partir de recherches sur Internet, en synthétisant les meilleures ressources disponibles, puis en optimisant chaque entrée avec l'IA pour produire des explications cohérentes, accessibles et actionnables.
 Les domaines couverts reflètent directement les expertises d'Eleven Labs : développement JS & PHP, DevOps, Data Engineering, Produit & Agilité, QA, et plus récemment Intelligence Artificielle.
@@ -19,19 +20,23 @@ Utilisé par    — rôles et entreprises qui utilisent la techno
 Contenu technique approfondi
 
 👨‍💻 Développement
+
 Rôles couverts : Développeur Backend, Frontend, Fullstack, Mobile, Architecte logiciel.
 Base de données — Écosystème JS : React, Vue.js, Angular, Next.js, Nuxt, Node.js, Express, NestJS, TypeScript, GraphQL, Vite, Webpack, Jest, Cypress, Storybook, Redux, Zustand, Prisma, Electron, Capacitor, React Native…
 Base de données — Écosystème PHP : Laravel, Symfony, Composer, PHPUnit, Doctrine, API Platform, Twig, WordPress…
 
 ⚙️ DevOps
+
 Rôles couverts : DevOps Engineer, SRE, Cloud Architect, Platform Engineer.
 Base de données : Docker, Kubernetes, GitHub Actions, GitLab CI, Jenkins, CircleCI, Terraform, Ansible, Chef, SaltStack, Prometheus, Grafana, Kibana, ElasticSearch, Nginx, Bash/Shell, Python (scripting), Git, SSH, Scripting…
 
 📊 Data Engineering
+
 Rôles couverts : Data Engineer, Data Analyst, Data Architect.
 Base de données (34 entrées) : Spark, Hadoop, Kafka, Airflow, dbt, Snowflake, BigQuery, Amazon Redshift, Azure Synapse Analytics, Talend, SSIS, Python, PySpark, Scala, Java, SQL, MongoDB, DynamoDB, Docker, Kubernetes, AWS, GCP, Azure, Data Lake, Data Warehouse, ETL/ELT, Architecture Lambda, Architecture Kappa, Architecture de Streaming Continue, Traitement de données distribuées, MapReduce, Pig, CI/CD (contexte Data)…
 
 🤖 Intelligence Artificielle (section récente)
+
 Rôles couverts : Data Scientist, ML Engineer, AI Engineer, MLOps Engineer, LLM Engineer / Prompt Engineer, AI Research Scientist.
 Base de données (34 entrées) organisée en 6 catégories :
 Catégorie Exemples 
@@ -43,6 +48,7 @@ Catégorie Exemples
 Architecture & Concepts Réseaux de neurones, Transformers, Fine-tuning, Transfer Learning, Feature Engineering, Reinforcement Learning
 
 📋 Produit & Agilité
+
 Rôles couverts : Product Owner, Product Manager, Scrum Master.
 Notions clés : Sprint, Sprint Planning, Sprint Review, Daily Scrum, Rétrospective, Product Backlog, User Story, Story Mapping.
 
