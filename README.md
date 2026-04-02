@@ -1,3 +1,5 @@
+Lien vers la bibliothèque : https://www.notion.so/Biblioth-que-Tech-3278a87c98a78082be15e02efa10f7f5?source=copy_link
+
 📚 Bibliothèque Tech
 
 Une base de connaissances tech complète, pensée pour monter en compétences rapidement sur les métiers et technologies du développement logiciel moderne.
